@@ -2,22 +2,43 @@
 #include <stdlib.h>
 #include <string.h>
 
+//Tamanho do Array para pessoas
+#define arrayP 150
+
 //prototype
 void menuInicial();
 void menuAtendimento();
 void solicitarAtendimento();
 
+//Struct para dados da pessoa
 struct Pessoa
 {
-    
+    int id;
+    char nome[100];
+    char cpf[14];
+    char tipoAtendimento[100];
 };
 
+typedef struct Pessoa Pessoa;
 
 int main(){
 
-    int opcao = 0;
-
+    Pessoa pessoa[arrayP];//33.000 - cada 220 unidade 
     menuInicial();
+
+}
+
+void menuInicial(){
+    int opcao = 0;
+    int novaPessoa = 0;
+
+    printf("-----| Bem-vindo ao sistema de atendimento |-----\n\n");
+    printf("1 - Solicitar Atendimento\n");
+    printf("2 - Listar Atendimentos Registrados\n");
+    printf("3 - Listar Atendimento por Setor\n");
+    printf("4 - Sair\n");
+    printf(">>>:");
+
     scanf("%d", &opcao);
     fflush(stdin);
     system("cls");
@@ -26,6 +47,8 @@ int main(){
     {
     case 1:
         solicitarAtendimento();
+        novaPessoa++;
+        //novaPessoa++;
         break;
     case 2:
         /* Listar Atendimentos Registrados */
@@ -41,16 +64,6 @@ int main(){
     default:
         break;
     }
-
-}
-
-void menuInicial(){
-    printf("-----| Bem-vindo ao sistema de atendimento |-----\n\n");
-    printf("1 - Solicitar Atendimento\n");
-    printf("2 - Listar Atendimentos Registrados\n");
-    printf("3 - Listar Atendimento por Setor\n");
-    printf("4 - Sair\n");
-    printf(">>>:");
 }
 
 void menuAtendimento(){
@@ -62,11 +75,12 @@ void menuAtendimento(){
 }
 
 void solicitarAtendimento(){
-    char nome[100];
-    char cpf[14];
+
+    char *nome;
+    char *cpf;
+    char *tipoAtendimento;
 
     int selecaoAtendimento = 0;
-    char tipoAtendimento[100];
 
     printf("Digite nome: ");
     fgets(nome, sizeof(nome), stdin);
