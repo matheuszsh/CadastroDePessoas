@@ -5,30 +5,33 @@
 //Tamanho do Array para pessoas
 #define arrayP 150
 
-//prototype
-void menuInicial();
-void menuAtendimento();
-void solicitarAtendimento();
-
 //Struct para dados da pessoa
 struct Pessoa
 {
     int id;
+
     char nome[100];
     char cpf[14];
-    char tipoAtendimento[100];
+    char tipoAtendimento[50];
 };
+
+typedef struct Pessoa Pessoa;
+
+//prototype
+void menuInicial(Pessoa pessoa[]);
+void menuAtendimento();
+void solicitarAtendimento(Pessoa pessoa[], int novaPessoa);
 
 typedef struct Pessoa Pessoa;
 
 int main(){
 
     Pessoa pessoa[arrayP];//33.000 - cada 220 unidade 
-    menuInicial();
+    menuInicial(pessoa);
 
 }
 
-void menuInicial(){
+void menuInicial(Pessoa pessoa[]){
     int opcao = 0;
     int novaPessoa = 0;
 
@@ -46,7 +49,12 @@ void menuInicial(){
     switch (opcao)
     {
     case 1:
-        solicitarAtendimento();
+        solicitarAtendimento(pessoa, novaPessoa);
+
+        printf("Nome: %s", pessoa[novaPessoa].nome);
+        printf("CPF: %s\n", pessoa[novaPessoa].cpf);
+        printf("Tipo de atendimento: %s\n", pessoa[novaPessoa].tipoAtendimento);
+        
         novaPessoa++;
         //novaPessoa++;
         break;
@@ -74,11 +82,11 @@ void menuAtendimento(){
     printf(">>>: ");
 }
 
-void solicitarAtendimento(){
+void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
 
-    char *nome;
-    char *cpf;
-    char *tipoAtendimento;
+    char nome[100];
+    char cpf[14];
+    char tipoAtendimento[50];
 
     int selecaoAtendimento = 0;
 
@@ -102,27 +110,29 @@ void solicitarAtendimento(){
     {
     case 1:
         strcpy(tipoAtendimento, "1 - Abertura de Conta");
-        printf("1 - Abertura de conta\n");
         break;
 
     case 2:
         strcpy(tipoAtendimento, "2 - Caixa");
-        printf("2 - Caixa\n");
         break;
 
     case 3:
         strcpy(tipoAtendimento, "3 - Gerente Pessoa Física");
-        printf("3 - Gerente Pessoa Física\n");
         break;
 
     case 4:
         strcpy(tipoAtendimento, "4 - Gerente Pessoa Jurídica");
-        printf("4 - Gerente Pessoa Jurídica\n");
         break;
 
     default:
         printf("Opção inválida!\n");
         break;
     }
+
+    //Definindo dados da pessoa
+    pessoa[novaPessoa].id = novaPessoa;
+    strcpy(pessoa[novaPessoa].nome, nome);
+    strcpy(pessoa[novaPessoa].cpf, cpf);
+    strcpy(pessoa[novaPessoa].tipoAtendimento, tipoAtendimento);
 
 }
