@@ -18,22 +18,41 @@ struct Pessoa
 typedef struct Pessoa Pessoa;
 
 //prototype
-void menuInicial(Pessoa pessoa[]);
+void menuInicial(Pessoa pessoa[], int novaPessoa);
 void menuAtendimento();
 void solicitarAtendimento(Pessoa pessoa[], int novaPessoa);
+void listarAtenRegistrados();
+
+void pulaLinhas();
 
 typedef struct Pessoa Pessoa;
 
 int main(){
 
     Pessoa pessoa[arrayP];//33.000 - cada 220 unidade 
-    menuInicial(pessoa);
+    int novaPessoa = 1;
 
+    //tamanho do array Pessoas
+    int tamanhoPessoa = ((sizeof(pessoa) / sizeof(pessoa[0])) + sizeof(novaPessoa/4)) % (sizeof(pessoa) / sizeof(pessoa[0]));
+
+    menuInicial(pessoa, novaPessoa);
+
+    //mostrar pessoas do array
+    for (int i = 1; i < tamanhoPessoa; i++)
+    {
+        printf("Identificador: %d\n", pessoa[i].id);
+        printf("Nome: %s", pessoa[i].nome);
+        printf("CPF: %s\n", pessoa[i].cpf);
+        printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
+        printf("<--------------------------------------------------->\n");
+    }
+    
 }
 
-void menuInicial(Pessoa pessoa[]){
+void menuInicial(Pessoa pessoa[], int novaPessoa){
+    //Pessoa pessoa[arrayP];
+
     int opcao = 0;
-    int novaPessoa = 0;
 
     printf("-----| Bem-vindo ao sistema de atendimento |-----\n\n");
     printf("1 - Solicitar Atendimento\n");
@@ -49,14 +68,11 @@ void menuInicial(Pessoa pessoa[]){
     switch (opcao)
     {
     case 1:
-        solicitarAtendimento(pessoa, novaPessoa);
+        //avaliar a necessidade de criar função para acessar e editar a pessoa dentro do array de pessoas
 
-        printf("Nome: %s", pessoa[novaPessoa].nome);
-        printf("CPF: %s\n", pessoa[novaPessoa].cpf);
-        printf("Tipo de atendimento: %s\n", pessoa[novaPessoa].tipoAtendimento);
-        
+        solicitarAtendimento(pessoa, novaPessoa);
         novaPessoa++;
-        //novaPessoa++;
+        menuInicial(pessoa, novaPessoa);
         break;
     case 2:
         /* Listar Atendimentos Registrados */
@@ -105,7 +121,8 @@ void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
     scanf("%d", &selecaoAtendimento);
     fflush(stdin);
     system("cls");
-
+    
+    //verificar a necessidade de transforma em função separada
     switch (selecaoAtendimento)
     {
     case 1:
@@ -134,5 +151,32 @@ void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
     strcpy(pessoa[novaPessoa].nome, nome);
     strcpy(pessoa[novaPessoa].cpf, cpf);
     strcpy(pessoa[novaPessoa].tipoAtendimento, tipoAtendimento);
+
+    //Exibição de dados da pessoa
+
+    printf("<----| Pessoa %d Cadastrada |---->\n\n", pessoa[novaPessoa].id);
+
+    printf("Identificador: %d\n", pessoa[novaPessoa].id);
+    printf("Nome: %s", pessoa[novaPessoa].nome);
+    printf("CPF: %s\n", pessoa[novaPessoa].cpf);
+    printf("Tipo de atendimento: %s\n", pessoa[novaPessoa].tipoAtendimento);
+
+    printf("\nPresione ENTER para retornar ao menu\n");
+    char enter[30];
+    fgets(enter, 30, stdin);
+    pulaLinhas();
+    
+}
+
+void listarAtenRegistrados(){
+
+}
+
+void pulaLinhas(){
+    for (size_t i = 0; i < 30; i++)
+    {
+        printf(">\n");
+    }
+    
 
 }
