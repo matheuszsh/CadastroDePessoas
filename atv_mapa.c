@@ -25,12 +25,13 @@ void menuAtendimento();
 
 void solicitarAtendimento(Pessoa pessoa[], int novaPessoa);
 void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa);
-
+void listarAtenPorSetor(Pessoa pessoa[], int novaPessoa);
 void pulaLinhas();
 
 typedef struct Pessoa Pessoa;
 
 int main(){
+    setlocale(LC_ALL, "");
 
     Pessoa pessoa[arrayP];//33.000 - cada 220 unidade 
     int novaPessoa = 1;
@@ -72,12 +73,12 @@ void menuInicial(Pessoa pessoa[], int novaPessoa){
         break;
     case 3:
         /* Listar Atendimento por Setor */
-
-
+        listarAtenPorSetor(pessoa, novaPessoa);
+        menuInicial(pessoa, novaPessoa);
         break;
     case 4:
         /* Sair */
-        printf("Fim da sessão. Até logo.\n")
+        printf("Fim da sessão. Até logo.\n");
         break; 
     
     
@@ -115,6 +116,7 @@ void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
     fflush(stdin);
     system("cls");
 
+    do{
     printf("Selecione a opção de atendimento:\n\n");
     menuAtendimento();
     scanf("%d", &selecaoAtendimento);
@@ -145,9 +147,14 @@ void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
 
     default:
         printf("Opção inválida!\n");
+        printf("\nPresione ENTER para escolher novamente.\n");
+        system("pause");
+        system("cls");
+        selecaoAtendimento = 0;
         break;
     }
-
+    }while (selecaoAtendimento == 0);
+    
     //Definindo dados da pessoa
     pessoa[novaPessoa].id = novaPessoa;
     strcpy(pessoa[novaPessoa].nome, nome);
@@ -190,25 +197,94 @@ void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa){
     pulaLinhas();
 }
 
+//Função em desenvolvimento - adicionar opção de seleção de setor para exibição
 void listarAtenPorSetor(Pessoa pessoa[], int novaPessoa){
 
-   printf("Lista de Pessoas Registradas Por Setor: \n\n");
-    for (int i = 1; i < novaPessoa; i++)
+    int opcao = 0;
+
+    do{
+    printf("Insira a opção do setor que deseja listar:\n\n");
+    
+    menuAtendimento();
+    scanf("%d", &opcao);
+    fflush(stdin);
+    system("cls");
+
+    switch (opcao)
     {
-        printf("Identificador: %d\n", pessoa[i].id);
-        printf("Nome: %s", pessoa[i].nome);
-        printf("CPF: %s\n", pessoa[i].cpf);
-        printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
-        printf("<--------------------------------------------------->\n");
+    case 1:
+        printf("Setor 1 - Abertura de Conta:\n\n");
+        for (int i = 1; i < novaPessoa; i++)
+        {
+            if(pessoa[i].idSetor == 1){
+                printf("Identificador: %d\n", pessoa[i].id);
+                printf("Nome: %s", pessoa[i].nome);
+                printf("CPF: %s\n", pessoa[i].cpf);
+                printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
+                printf("<--------------------------------------------------->\n");
+            }
+        }
+        break;
+    
+    case 2:
+        printf("Setor 2 - Caixa\n\n");
+        for (int i = 1; i < novaPessoa; i++)
+        {
+            if(pessoa[i].idSetor == 2){
+                printf("Identificador: %d\n", pessoa[i].id);
+                printf("Nome: %s", pessoa[i].nome);
+                printf("CPF: %s\n", pessoa[i].cpf);
+                printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
+                printf("<--------------------------------------------------->\n");
+            }
+        }
+        break;
+    
+    case 3:
+        printf("Setor 3 - Gerente Pessoa Física\n\n");
+        for (int i = 1; i < novaPessoa; i++)
+        {
+            if(pessoa[i].idSetor == 3){
+                printf("Identificador: %d\n", pessoa[i].id);
+                printf("Nome: %s", pessoa[i].nome);
+                printf("CPF: %s\n", pessoa[i].cpf);
+                printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
+                printf("<--------------------------------------------------->\n");
+            }
+        }
+        break;
+
+    case 4:
+        printf("Setor 4 - Gerente Pessoa Jurídica\n\n");
+        for (int i = 1; i < novaPessoa; i++)
+        {
+            if(pessoa[i].idSetor == 4){
+                printf("Identificador: %d\n", pessoa[i].id);
+                printf("Nome: %s", pessoa[i].nome);
+                printf("CPF: %s\n", pessoa[i].cpf);
+                printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
+                printf("<--------------------------------------------------->\n");
+            }
+        }
+        break;
+    
+    default:
+        printf("Opção Inválida.\n");
+        printf("\nPresione ENTER para retornar ao menu de listagem\n");
+        system("pause");
+        system("cls");
+        opcao = 0;
+        break;
     }
+    }while (opcao == 0);  
+    
 
     printf("\nPresione ENTER para retornar ao menu\n");
-    char enter[30];
-    fgets(enter, 30, stdin);
+    system("pause");
     pulaLinhas();
-    
 }
 
+//Mantém o histórico da atividade gerada anteriormente para cima de 30 linhas
 void pulaLinhas(){
     for (size_t i = 0; i < 30; i++)
     {
