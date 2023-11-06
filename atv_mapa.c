@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 //Tamanho do Array para pessoas
-#define arrayP 150
+#define arrayP 100
 
 //Struct para dados da pessoa
 struct Pessoa
@@ -31,9 +32,9 @@ void pulaLinhas();
 typedef struct Pessoa Pessoa;
 
 int main(){
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "pt_BR_utf8");//Adicionando caracteres UTF-8 
 
-    Pessoa pessoa[arrayP];//33.000 - cada 220 unidade 
+    Pessoa pessoa[arrayP];
     int novaPessoa = 1;
 
     menuInicial(pessoa, novaPessoa);
@@ -61,8 +62,28 @@ void menuInicial(Pessoa pessoa[], int novaPessoa){
         //avaliar a necessidade de criar função para acessar e editar a pessoa dentro do array de pessoas
         /* Soliciatar Atendimento*/
 
-        solicitarAtendimento(pessoa, novaPessoa);
-        novaPessoa++;
+        printf("Para:\n\nSolicitar atendimento(1)\nEditar atendimento(2)\n\n>>>:");
+        scanf("%d", &opcao);
+        fflush(stdin);
+        system("cls");
+
+        if (opcao == 1)
+        {
+            solicitarAtendimento(pessoa, novaPessoa);
+            novaPessoa++;
+        }
+        else if (opcao == 2)
+        {
+            editarAtendimento(pessoa, novaPessoa);
+        }
+        else
+        {
+            printf("Opção Inválida.\n");
+            printf("\nPresione ENTER para retornar ao menu\n");
+            system("pause");
+            system("cls");
+        }
+       
         menuInicial(pessoa, novaPessoa);
         break;
     case 2:
@@ -122,8 +143,7 @@ void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
     scanf("%d", &selecaoAtendimento);
     fflush(stdin);
     system("cls");
-    
-    //verificar a necessidade de transforma em função separada, para em caso de entrada inválida criar loop
+
     switch (selecaoAtendimento)
     {
     case 1:
@@ -177,6 +197,8 @@ void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
     pulaLinhas();
     
 }
+
+void editarAtendimento(pessoa, novaPessoa){}
 
 void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa){
     
