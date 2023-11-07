@@ -12,10 +12,12 @@ struct Pessoa
     int id;
 
     char nome[100];
-    char cpf[14];
+    char cpf[15];
 
     char tipoAtendimento[50];
     int idSetor;
+
+
 };
 
 typedef struct Pessoa Pessoa;
@@ -25,6 +27,8 @@ void menuInicial(Pessoa pessoa[], int novaPessoa);
 void menuAtendimento();
 
 void solicitarAtendimento(Pessoa pessoa[], int novaPessoa);
+void editarAtendimento(Pessoa pessoa[], int novaPessoa);
+
 void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa);
 void listarAtenPorSetor(Pessoa pessoa[], int novaPessoa);
 void pulaLinhas();
@@ -35,6 +39,7 @@ int main(){
     setlocale(LC_ALL, "pt_BR_utf8");//Adicionando caracteres UTF-8 
 
     Pessoa pessoa[arrayP];
+
     int novaPessoa = 1;
 
     menuInicial(pessoa, novaPessoa);
@@ -59,8 +64,7 @@ void menuInicial(Pessoa pessoa[], int novaPessoa){
     switch (opcao)
     {
     case 1:
-        //avaliar a necessidade de criar função para acessar e editar a pessoa dentro do array de pessoas
-        /* Soliciatar Atendimento*/
+        //Soliciatar Atendimento ou editar atendimento
 
         printf("Para:\n\nSolicitar atendimento(1)\nEditar atendimento(2)\n\n>>>:");
         scanf("%d", &opcao);
@@ -87,18 +91,18 @@ void menuInicial(Pessoa pessoa[], int novaPessoa){
         menuInicial(pessoa, novaPessoa);
         break;
     case 2:
-        /* Listar Atendimentos Registrados */
+        //Listar Atendimentos Registrados
 
         listarAtenRegistrados(pessoa, novaPessoa);
         menuInicial(pessoa, novaPessoa);
         break;
     case 3:
-        /* Listar Atendimento por Setor */
+        // Listar Atendimento por Setor
         listarAtenPorSetor(pessoa, novaPessoa);
         menuInicial(pessoa, novaPessoa);
         break;
     case 4:
-        /* Sair */
+        //Sair
         printf("Fim da sessão. Até logo.\n");
         break; 
     
@@ -121,7 +125,7 @@ void menuAtendimento(){
 void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
 
     char nome[100];
-    char cpf[14];
+    char cpf[15];
     char tipoAtendimento[50];
     int idSetor;
 
@@ -198,7 +202,29 @@ void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
     
 }
 
-void editarAtendimento(pessoa, novaPessoa){}
+void editarAtendimento(Pessoa pessoa[], int novaPessoa){
+    int idEdit = -1;
+
+    printf("Indique o id da pessoa:  ");
+    scanf("%d", &idEdit);
+    fflush(stdin);
+    system("cls");
+
+    if (idEdit >= 0 && idEdit < novaPessoa){
+        for (int p = 0; p < novaPessoa; p++)
+        {
+            if(pessoa[p].id == idEdit){
+                solicitarAtendimento(pessoa, idEdit);
+            }
+        }
+    }
+    else{
+        printf("Id inexistente.\n");
+        printf("\nPresione ENTER para retornar ao menu\n");
+        system("pause");
+        system("cls");
+    }   
+}
 
 void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa){
     
