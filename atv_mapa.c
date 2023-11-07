@@ -122,6 +122,7 @@ void menuAtendimento(){
     printf(">>>: ");
 }
 
+//Função para solicitar atendimento
 void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
 
     char nome[100];
@@ -202,6 +203,7 @@ void solicitarAtendimento(Pessoa pessoa[], int novaPessoa){
     
 }
 
+//Função para editar atendimento
 void editarAtendimento(Pessoa pessoa[], int novaPessoa){
     int idEdit = -1;
 
@@ -226,6 +228,7 @@ void editarAtendimento(Pessoa pessoa[], int novaPessoa){
     }   
 }
 
+//Função pra listar todos atendimentos registrados
 void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa){
     
 
@@ -245,7 +248,7 @@ void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa){
     pulaLinhas();
 }
 
-//Função em desenvolvimento - adicionar opção de seleção de setor para exibição
+//Função para listar somente por setor
 void listarAtenPorSetor(Pessoa pessoa[], int novaPessoa){
 
     int opcao = 0;
