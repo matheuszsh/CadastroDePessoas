@@ -262,7 +262,26 @@ void listarAtenPorSetor(Pessoa pessoa[], int novaPessoa){
     system("cls");
 
     if(opcao > 0 && opcao <= 4){
-        printf("Setor %d: %s\n", opcao, pessoa->tipoAtendimento);
+        
+        switch (opcao)
+        {
+        case 1:
+            printf("Setor %d: Abertura de Conta\n", opcao);
+            break;
+        case 2:
+            printf("Setor %d: Caixa\n", opcao);
+            break;
+        case 3:
+            printf("Setor %d: Gerente Pessoa Física\n", opcao);
+            break;
+        case 4:
+            printf("Setor %d: Gerente Pessoa Jurídica\n", opcao);
+            break;
+        
+        default:
+            break;
+        }
+        
         for (int i = 1; i < novaPessoa; i++)
         {
             if(pessoa[i].idSetor == opcao){

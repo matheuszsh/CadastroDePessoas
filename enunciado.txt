@@ -42,3 +42,5 @@ Algumas funções que serão úteis durante o desenvolvimento do programa:
 * system(“cls”) — Chamada de sistema que limpa os caracteres que foram impressos na tela anteriormente.
 * fflush(stdin) — Limpar o buffer do teclado. Essa função deve sempre ser utilizada após usar alguma função de entrada de dados como o scanf, gets etc. Isso se dá, pois, em algumas situações, o buffer do teclado mantém “lixo de memória”, prejudicando a próxima operação de entrada do programa.
 * A função setlocale(LC_ALL, "Portuguese") da biblioteca locale.h pode ser útil caso você queira que os acentos e as pontuações da língua portuguesa sejam impressos corretamente.​
+
+atv_mapa.c
