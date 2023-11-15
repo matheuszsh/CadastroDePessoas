@@ -261,13 +261,11 @@ void listarAtenPorSetor(Pessoa pessoa[], int novaPessoa){
     fflush(stdin);
     system("cls");
 
-    switch (opcao)
-    {
-    case 1:
-        printf("Setor 1 - Abertura de Conta:\n\n");
+    if(opcao > 0 && opcao <= 4){
+        printf("Setor %d: %s\n", opcao, pessoa->tipoAtendimento);
         for (int i = 1; i < novaPessoa; i++)
         {
-            if(pessoa[i].idSetor == 1){
+            if(pessoa[i].idSetor == opcao){
                 printf("Identificador: %d\n", pessoa[i].id);
                 printf("Nome: %s", pessoa[i].nome);
                 printf("CPF: %s\n", pessoa[i].cpf);
@@ -275,57 +273,13 @@ void listarAtenPorSetor(Pessoa pessoa[], int novaPessoa){
                 printf("<--------------------------------------------------->\n");
             }
         }
-        break;
-    
-    case 2:
-        printf("Setor 2 - Caixa\n\n");
-        for (int i = 1; i < novaPessoa; i++)
-        {
-            if(pessoa[i].idSetor == 2){
-                printf("Identificador: %d\n", pessoa[i].id);
-                printf("Nome: %s", pessoa[i].nome);
-                printf("CPF: %s\n", pessoa[i].cpf);
-                printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
-                printf("<--------------------------------------------------->\n");
-            }
-        }
-        break;
-    
-    case 3:
-        printf("Setor 3 - Gerente Pessoa Física\n\n");
-        for (int i = 1; i < novaPessoa; i++)
-        {
-            if(pessoa[i].idSetor == 3){
-                printf("Identificador: %d\n", pessoa[i].id);
-                printf("Nome: %s", pessoa[i].nome);
-                printf("CPF: %s\n", pessoa[i].cpf);
-                printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
-                printf("<--------------------------------------------------->\n");
-            }
-        }
-        break;
-
-    case 4:
-        printf("Setor 4 - Gerente Pessoa Jurídica\n\n");
-        for (int i = 1; i < novaPessoa; i++)
-        {
-            if(pessoa[i].idSetor == 4){
-                printf("Identificador: %d\n", pessoa[i].id);
-                printf("Nome: %s", pessoa[i].nome);
-                printf("CPF: %s\n", pessoa[i].cpf);
-                printf("Tipo de atendimento: %s\n", pessoa[i].tipoAtendimento);
-                printf("<--------------------------------------------------->\n");
-            }
-        }
-        break;
-    
-    default:
+    }
+    else{
         printf("Opção Inválida.\n");
         printf("\nPresione ENTER para retornar ao menu de listagem\n");
         system("pause");
         system("cls");
         opcao = 0;
-        break;
     }
     }while (opcao == 0);  
     
