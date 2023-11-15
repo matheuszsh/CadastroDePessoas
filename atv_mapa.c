@@ -228,7 +228,7 @@ void editarAtendimento(Pessoa pessoa[], int novaPessoa){
     }   
 }
 
-//Função pra listar todos atendimentos registrados
+//Função pra listar todos atendimentos registrados.
 void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa){
     
 
