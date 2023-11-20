@@ -3,24 +3,25 @@
 #include <string.h>
 #include <locale.h>
 
-//Tamanho do Array para pessoas
-#define arrayP 100
+//Definição de tamanhos
+#define ARRAY_P 100
+#define TAM_NOME 100
+#define TAM_CPF 15
+#define TAM_ATEM 50
 
 //Struct para dados da pessoa
-struct Pessoa
+struct Estrutura_Pessoa
 {
     int id;
 
-    char nome[100];
-    char cpf[15];
+    char nome[TAM_NOME];
+    char cpf[TAM_CPF];
 
-    char tipoAtendimento[50];
+    char tipoAtendimento[TAM_ATEM];
     int idSetor;
-
-
 };
 
-typedef struct Pessoa Pessoa;
+typedef struct Estrutura_Pessoa Pessoa;
 
 //prototype
 void menuInicial(Pessoa pessoa[], int novaPessoa);
@@ -33,12 +34,11 @@ void listarAtenRegistrados(Pessoa pessoa[], int novaPessoa);
 void listarAtenPorSetor(Pessoa pessoa[], int novaPessoa);
 void pulaLinhas();
 
-typedef struct Pessoa Pessoa;
 
 int main(){
     setlocale(LC_ALL, "pt_BR_utf8");//Adicionando caracteres UTF-8 
 
-    Pessoa pessoa[arrayP];
+    Pessoa pessoa[ARRAY_P];
 
     int novaPessoa = 1;
 
