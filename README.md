@@ -32,3 +32,14 @@ Bem-vindo ao sistema de atendimento
 3 - Listar Atendimento por Setor
 
 4 - Sair
+
+## Estrutura do Programa
+
+O sistema deve ser desenvolvido em **sub-rotinas** para cada funcionalidade.
+
+### Funções úteis:
+
+- `system("pause")` — Pausa o programa e aguarda ação do usuário.
+- `system("cls")` — Limpa a tela.
+- `fflush(stdin)` — Limpa o buffer do teclado. Deve ser usado após `scanf`, `gets` etc.
+- `setlocale(LC_ALL, "Portuguese")` — Permite imprimir acentos e caracteres da língua portuguesa corretamente.
