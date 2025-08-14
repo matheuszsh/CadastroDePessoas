@@ -9,7 +9,7 @@ Entretanto, enquanto a tecnologia não substitui completamente o atendimento pre
 
 ## Funcionalidades do Sistema
 
-- Cadastrar nome, CPF e qual setor de atendimento que deseja ser atendido:
+Cadastrar nome, CPF e qual setor de atendimento que deseja ser atendido:
 1. Abertura de Conta
 2. Caixa
 3. Gerente Pessoa Física
