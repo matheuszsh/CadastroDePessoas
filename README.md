@@ -23,9 +23,12 @@ Listar atendimento por tipo de atendimento: o usuário deve escolher um dos tipo
 
 ## Menu Inicial
 
-- Bem-vindo ao sistema de atendimento
+Bem-vindo ao sistema de atendimento
 
 1 - Solicitar Atendimento
+
 2 - Listar Atendimentos Registrados
+
 3 - Listar Atendimento por Setor
+
 4 - Sair
