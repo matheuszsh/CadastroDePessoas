@@ -14,7 +14,9 @@ Cadastrar nome, CPF e qual setor de atendimento que deseja ser atendido:
 2. Caixa
 3. Gerente Pessoa Física
 4. Gerente Pessoa Jurídica
+   
 Listar todos os atendimentos registrados
+
 Listar atendimento por tipo de atendimento: o usuário deve escolher um dos tipos e, após a leitura, mostrar a listagem apenas do tipo escolhido
 
 ---
